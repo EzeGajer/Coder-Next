@@ -1,18 +1,18 @@
+import React from "react";
+import styles from "./contacto.module.css";
 
-import Image from "next/image"
-export default function Contactos(params) {
-return (
-    <>
-   
-    <div className="container m-auto p-8 items-center">
-    <Image
-      src="/capellari.jpg"
-      width={1000}
-      height={1000}
-      alt="Picture of the author"
-    />
+const Contacto = () => {
+  return (
+    <div className={styles.pageContainer}>
+      <h1 className={styles.pageTitle}>Contáctanos</h1>
+      <div className={styles.pageContent}>
+        <p>
+          No dudes en ponerte en contacto con nosotros. Estamos aquí para
+          ayudarte.
+        </p>
+      </div>
     </div>
-    </>
-    
-)
-}
+  );
+};
+
+export default Contacto;

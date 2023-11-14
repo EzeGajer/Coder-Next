@@ -1,25 +1,16 @@
-import Contador from "@/components/contador";
-import Header from "@/components/header";
+import React from 'react';
+import styles from './page.module.css';
 
-export const metadata = {
-  title: 'Carrito de compras',
-  description:'app de Next'
-}
-
-
-
-export default function Home() {
+const Home = () => {
   return (
     <>
-       <main className="container m-auto my-10">
-      <div className="text-2xl font-bold">
-      
-    <hr className="px-1.5"></hr>
-      <Contador />
-      </div>
-   
-    </main>
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <hr className={styles.hr} />
+        </div>
+      </main>
     </>
- 
-  )
-}
+  );
+};
+
+export default Home;

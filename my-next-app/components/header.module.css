@@ -1,0 +1,54 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #008080; 
+  padding: 10px 20px;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menuItems {
+  display: flex;
+  margin-right: 20px;
+}
+
+.menuItem {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menuItem:hover {
+  color: #c0c0c0; 
+}
+
+.loginButton {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #008080;
+  border: 1px solid #008080;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.loginButton:hover {
+  background-color: #008080;
+  color: #fff;
+}
