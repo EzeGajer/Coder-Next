@@ -1,0 +1,33 @@
+
+.novedad {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+  }
+  
+  .novedad-imagen {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .novedad-nombre {
+    margin-top: 8px;
+    font-weight: bold;
+  }
+  
+  .novedad-descripcion {
+    color: #333;
+    margin-top: 8px;
+  }
+  
+  .title {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  
+  

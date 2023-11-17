@@ -1,0 +1,57 @@
+/* not-found.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh; 
+}
+
+.pageContent {
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 1rem;
+  color: #555;
+}
+
+.imageContainer {
+  text-align: center;
+  margin: 20px 0; 
+}
+
+.image {
+  width: 100%;
+  max-width: 600px; 
+  height: auto;
+  display: block;
+  margin: 0 auto; 
+}
+
+.buttonContainer {
+  margin-top: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #008080;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: #005454;
+}

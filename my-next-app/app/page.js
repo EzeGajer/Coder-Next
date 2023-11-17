@@ -1,16 +1,16 @@
-import React from 'react';
-import styles from './page.module.css';
+// pages/index.js
 
-const Home = () => {
-  return (
-    <>
-      <main className={styles.main}>
-        <div className={styles.container}>
-          <hr className={styles.hr} />
-        </div>
-      </main>
-    </>
-  );
-};
+import React from 'react';
+import Novedades from '@/components/novedades';
+import Destacados from '@/components/productos-destacados';
+
+const Home = () => (
+  <>
+    <main>
+      <Novedades />
+      <Destacados />
+    </main>
+  </>
+);
 
 export default Home;
