@@ -1,54 +1,31 @@
 // productos-destacados.js
-import React from 'react';
+import { useClient } from 'next/data-client';
+import React, { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 import styles from './productos-destacados.module.css';
-
-const productosDestacados = [
-  {
-    id: 1,
-    nombre: 'Producto 1',
-    precio: '$50.00',
-    imagen: 'https://parecidas.com/img_es/tag/thumb/41/3142.jpg',
-    descripcion: 'Descripción del Producto 1',
-  },
-  {
-    id: 2,
-    nombre: 'Producto 2',
-    precio: '$40.00',
-    imagen: 'https://m.media-amazon.com/images/I/71eU1IW6r1L._AC_UL400_.jpg',
-    descripcion: 'Descripción del Producto 2',
-  },
-  {
-    id: 3,
-    nombre: 'Producto 3',
-    precio: '$35.00',
-    imagen: 'https://m.media-amazon.com/images/I/51PIFv%2BIElL._AC_SY200_QL15_.jpg',
-    descripcion: 'Descripción del Producto 3',
-  },
-  {
-    id: 4,
-    nombre: 'Producto 4',
-    precio: '$60.00',
-    imagen: 'https://m.media-amazon.com/images/I/51xF6NdvYoL._AC_UL400_.jpg',
-    descripcion: 'Descripción del Producto 4',
-  },
-  {
-    id: 5,
-    nombre: 'Producto 5',
-    precio: '$48.00',
-    imagen: 'https://m.media-amazon.com/images/I/71NNZ6pfRML._AC_SY200_QL15_.jpg',
-    descripcion: 'Descripción del Producto 5',
-  },
-  {
-    id: 6,
-    nombre: 'Producto 6',
-    precio: '$55.00',
-    imagen: 'https://http2.mlstatic.com/D_NQ_NP_916512-MLA26400692147_112017-O.webp',
-    descripcion: 'Descripción del Producto 6',
-  },
-];
+import { db } from '../../firebase/config';
 
 const ProductosDestacados = ({ productosDestacadosProp }) => {
-  const productos = productosDestacadosProp || productosDestacados;
+  const [productos, setProductos] = useState(productosDestacadosProp || []);
+  useClient(); // Marcar este componente como Client Component
+
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const productosCollection = collection(db, 'productos');
+        const productosSnapshot = await getDocs(productosCollection);
+        const productosData = productosSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProductos(productosData);
+      } catch (error) {
+        console.error('Error al obtener productos:', error);
+      }
+    };
+
+    fetchProductos();
+  }, []); // Asegúrate de pasar un array vacío como dependencia para que useEffect se ejecute solo al montar el componente
 
   return (
     <div className={styles.grid}>
@@ -59,9 +36,11 @@ const ProductosDestacados = ({ productosDestacadosProp }) => {
             alt={producto.nombre}
             className={styles.image}
           />
-          <h3 className={styles.title}>{producto.nombre}</h3>
-          <p className={styles.description}>{producto.descripcion}</p>
-          <p className={styles.price}>{producto.precio}</p>
+          <div className={styles.cardContent}>
+            <h3 className={styles.title}>{producto.nombre}</h3>
+            <p className={styles.description}>{producto.descripcion}</p>
+            <p className={styles.price}>{producto.precio}</p>
+          </div>
         </div>
       ))}
     </div>
