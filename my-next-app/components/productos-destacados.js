@@ -1,13 +1,14 @@
 // productos-destacados.js
-import { useClient } from 'next/data-client';
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect, useContext } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import styles from './productos-destacados.module.css';
-import { db } from '../../firebase/config';
+import { db } from '../firebase/config';
+import { CartContext } from '../context/cartContext';
 
 const ProductosDestacados = ({ productosDestacadosProp }) => {
   const [productos, setProductos] = useState(productosDestacadosProp || []);
-  useClient(); // Marcar este componente como Client Component
+  const { agregarAlCarrito } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProductos = async () => {
@@ -25,7 +26,7 @@ const ProductosDestacados = ({ productosDestacadosProp }) => {
     };
 
     fetchProductos();
-  }, []); // Asegúrate de pasar un array vacío como dependencia para que useEffect se ejecute solo al montar el componente
+  }, []);
 
   return (
     <div className={styles.grid}>
@@ -39,7 +40,8 @@ const ProductosDestacados = ({ productosDestacadosProp }) => {
           <div className={styles.cardContent}>
             <h3 className={styles.title}>{producto.nombre}</h3>
             <p className={styles.description}>{producto.descripcion}</p>
-            <p className={styles.price}>{producto.precio}</p>
+            <p className={styles.price}>{producto.precio}$</p>
+            <button onClick={() => agregarAlCarrito(producto)}>Agregar al Carrito</button>
           </div>
         </div>
       ))}

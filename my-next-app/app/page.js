@@ -3,14 +3,17 @@
 import React from 'react';
 import Novedades from '@/components/novedades';
 import Destacados from '@/components/productos-destacados';
+import { CartProvider } from '../context/cartContext';
 
 const Home = () => (
-  <>
-    <main>
-      <Novedades />
-      <Destacados />
-    </main>
-  </>
+  <CartProvider>
+    <>
+      <main>
+        <Novedades />
+        <Destacados />
+      </main>
+    </>
+  </CartProvider>
 );
 
 export default Home;
